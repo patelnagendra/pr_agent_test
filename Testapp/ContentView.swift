@@ -14,9 +14,11 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            Text("Congratulations, you've just written your first SwiftUI app!")
         }
         .padding()
     }
+    // TODO: Remove mock API
 }
 
 #Preview {
