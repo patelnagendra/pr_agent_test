@@ -4,14 +4,14 @@
 name: iOS Build
 
 on:
- push:
+  push:
     branches:
       - main
   pull_request:
 
 jobs:
   build:
-    runs-on: macos-15   # or macos-latest
+    runs-on: macos-15
 
     steps:
       - uses: actions/checkout@v4
