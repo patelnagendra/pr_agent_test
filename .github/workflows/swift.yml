@@ -26,13 +26,13 @@ jobs:
         run: |
           xcodebuild \
             -resolvePackageDependencies \
-            -project MyApp.xcodeproj
+            -project Testapp.xcodeproj
 
       - name: Build
         run: |
           xcodebuild \
-            -project MyApp.xcodeproj \
-            -scheme MyApp \
+            -project Testapp.xcodeproj \
+            -scheme Testapp \
             -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             clean build
