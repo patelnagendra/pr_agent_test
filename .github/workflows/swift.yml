@@ -19,16 +19,6 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
-      - name: Show Xcode version
-        run: xcodebuild -version
-      - name: List Device Types
-        run: xcrun simctl list devicetypes
-
-      - name: List Runtimes
-        run: xcrun simctl list runtimes
-
-      - name: List Devices
-        run: xcrun simctl list devices
       - name: Resolve Swift Packages
         run: |
           xcodebuild \
@@ -56,3 +46,27 @@ jobs:
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
              clean build
+      - name: Collect App
+       run: |
+        mkdir -p artifacts
+
+        APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData \
+        -path "*/Build/Products/Debug-iphonesimulator/Testapp.app" \
+        | head -n 1)
+
+        echo "Found app at: $APP_PATH"
+
+        if [ -z "$APP_PATH" ]; then
+         echo "Testapp.app not found!"
+         exit 1
+         fi
+
+        cp -R "$APP_PATH" artifacts/
+
+        ls -R artifacts
+
+      - name: Upload Simulator App
+        uses: actions/upload-artifact@v4
+        with:
+         name: Testapp-Simulator
+         path: artifacts
