@@ -21,20 +21,14 @@ jobs:
 
       - name: Show Xcode version
         run: xcodebuild -version
-      - name: Create Simulator
-        run:  xcrun simctl create "iPhone 16" \
-              com.apple.CoreSimulator.SimDeviceType.iPhone-16 \
-              com.apple.CoreSimulator.SimRuntime.iOS-18-5
+      - name: List Device Types
+        run: xcrun simctl list devicetypes
 
-      - name: Show Simulators
-        run: xcrun simctl list
+      - name: List Runtimes
+        run: xcrun simctl list runtimes
 
-      - name: Show Destinations
-        run: xcodebuild \
-          -showdestinations \
-          -project Testapp.xcodeproj \
-          -scheme Testapp
-
+      - name: List Devices
+        run: xcrun simctl list devices
       - name: Resolve Swift Packages
         run: |
           xcodebuild \
@@ -47,5 +41,6 @@ jobs:
             -project Testapp.xcodeproj \
             -scheme Testapp \
             -configuration Debug \
+            -sdk iphonesimulator \
             -destination 'platform=iOS Simulator' \
             clean build
