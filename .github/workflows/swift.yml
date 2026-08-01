@@ -34,6 +34,19 @@ jobs:
           xcodebuild \
             -resolvePackageDependencies \
             -project Testapp.xcodeproj
+      - name: Show Destinations JSON
+        run: |
+          xcodebuild \
+           -project Testapp.xcodeproj \
+           -scheme Testapp \
+           -showdestinations -json
+           
+      - name: Show Build Settings
+        run: |
+         xcodebuild \
+          -project Testapp.xcodeproj \
+          -scheme Testapp \
+          -showBuildSettings
 
       - name: Build
         run: |
@@ -41,5 +54,4 @@ jobs:
             -project Testapp.xcodeproj \
             -scheme Testapp \
             -sdk iphonesimulator \
-            -destination 'id=1F9BBFF1-748D-401C-873B-C847555D1BF7'\
              clean build
