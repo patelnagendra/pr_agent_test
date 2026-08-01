@@ -42,8 +42,8 @@ jobs:
            -showdestinations -json
            
       - name: Show Important Build Settings
-       run: |
-        xcodebuild \
+        run: |
+         xcodebuild \
          -project Testapp.xcodeproj \
          -scheme Testapp \
          -showBuildSettings | egrep \
