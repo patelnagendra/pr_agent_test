@@ -41,4 +41,5 @@ jobs:
             -project Testapp.xcodeproj \
             -scheme Testapp \
             -sdk iphonesimulator \
+            -destination 'id=E514A76C-D366-4B28-A6F6-E62A57B237C3'\
              clean build
