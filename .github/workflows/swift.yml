@@ -37,10 +37,8 @@ jobs:
 
       - name: Build
         run: |
-          xcodebuild \
+           xcodebuild \
             -project Testapp.xcodeproj \
             -scheme Testapp \
-            -configuration Debug \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator' \
-            clean build
+             clean build
