@@ -41,13 +41,13 @@ jobs:
            -scheme Testapp \
            -showdestinations -json
            
-      - name: Show Build Settings
-        run: |
-         xcodebuild \
-          -project Testapp.xcodeproj \
-          -scheme Testapp \
-          -showBuildSettings
-
+      - name: Show Important Build Settings
+       run: |
+        xcodebuild \
+         -project Testapp.xcodeproj \
+         -scheme Testapp \
+         -showBuildSettings | egrep \
+          "PRODUCT_TYPE|SUPPORTED_PLATFORMS|TARGETED_DEVICE_FAMILY|SDKROOT|IPHONEOS_DEPLOYMENT_TARGET|PRODUCT_BUNDLE_IDENTIFIER"
       - name: Build
         run: |
            xcodebuild \
